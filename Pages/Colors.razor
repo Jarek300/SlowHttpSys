@@ -1,0 +1,34 @@
+﻿@using AsTrend.Library.Colors;
+
+
+<div class="" @ref=mDropdownRef>
+    <div class="bootstrap-color-picker px-3">
+        @{
+            var rowNo = -1;
+        }
+        @foreach (var row in mPalette.Rows)
+        {
+            @if (row.Colors.Length > 0)
+            {
+                ++rowNo;
+
+                <div class="bootstrap-color-picker-row">
+                    @for (int x = 0; x < row.Colors.Length; ++x)
+                    {
+                        var color = row.Colors[x];
+                        <ColorItem Color=color Y=rowNo X=x />
+                    }
+                </div>
+            }
+            else
+            {
+                <hr class="dropdown-divider w-100 my-1">
+            }
+        }
+    </div>
+</div>
+
+@code {
+    PickerPalette.Palette mPalette = PickerPalette.CreatePalette();
+    ElementReference mDropdownRef;
+}

@@ -1,0 +1,38 @@
+﻿@using AsTrend.Library.Colors;
+
+@if (Color == null)
+    return;
+
+<div class=""
+   style="@mStyle"
+   title="@mTitle"
+   href="#"
+   data-x="@X"
+   data-y="@Y"
+   tabindex="0">
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public PickerPalette.NamedColor? Color { get; set; }
+
+    [Parameter, EditorRequired]
+    public int X { get; set; }
+
+    [Parameter, EditorRequired]
+    public int Y { get; set; }
+
+
+    string mTitle = "";
+    string mStyle = "";
+
+
+    protected override void OnParametersSet()
+    {
+        if (Color == null)
+            return;
+
+        mTitle = $"{Color.Name}\n{Color.Color.Hex}";
+        mStyle = $"background-color: {Color.Color.Hex};";
+    }
+}

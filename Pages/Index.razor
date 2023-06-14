@@ -1,0 +1,36 @@
+﻿@page "/"
+
+
+<div class="row p-6" style="width:300px;">
+    <div class="col">
+        <button class="btn btn-success" @onclick="() => showPalette = false" disabled="@(!showPalette)">
+            Hide palette
+        </button>
+    </div>
+
+    <div class="col">
+        <button class="btn btn-success" @onclick="() => showPalette = true" disabled="@(showPalette)">
+            Show palette
+        </button>
+    </div>
+</div>
+
+
+@if (showPalette)
+{
+    <div class="row p-6" >
+        <div class="col">
+            <Colors></Colors>
+        </div>
+
+        <div class="col">
+            <Colors></Colors>
+        </div>
+    </div>
+}
+
+
+
+@code {
+    bool showPalette = false;
+}
